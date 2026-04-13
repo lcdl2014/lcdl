@@ -2,7 +2,8 @@
 // LA CUEVA DEL LOBIZÓN — APP.JS
 // =====================================================
 
-const D = window.LCDL_DATA;
+// D se asigna en DOMContentLoaded para garantizar que data.js ya cargó
+let D = {};
 
 // ─── UTILS ────────────────────────────────────────
 function getInitials(nombre) {
@@ -29,10 +30,18 @@ function animateCount(el) {
 
 // ─── HERO COUNTERS ─────────────────────────────────
 function initHeroCounters() {
+  const els = document.querySelectorAll('.hstat-num');
+  // Si ya están en el viewport al cargar, animalos directamente
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); obs.unobserve(e.target); } });
-  }, { threshold: 0.4 });
-  document.querySelectorAll('.hstat-num').forEach(el => obs.observe(el));
+    entries.forEach(e => {
+      if (e.isIntersecting) { animateCount(e.target); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -10px 0px' });
+  els.forEach(el => {
+    // Forzar valor inicial en 0 visualmente
+    el.textContent = '0';
+    obs.observe(el);
+  });
 }
 
 // ─── NAV ──────────────────────────────────────────
@@ -369,6 +378,14 @@ function initChatbot() {
 
 // ─── INIT ──────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  // Asegurarse que los datos estén disponibles
+  if (!window.LCDL_DATA) {
+    console.error('LCDL_DATA no encontrado. Verificar que data.js cargó correctamente.');
+    return;
+  }
+  // Reasignar D con los datos reales
+  Object.assign(D, window.LCDL_DATA);
+
   initNav();
   initHeroCounters();
   initTemporadas();
