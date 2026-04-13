@@ -26,6 +26,47 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--gris-claro); color: var(--negro); line-height: 1.6; }
 
+/* ===== LOADING SCREEN ===== */
+#loadingScreen {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--negro); display: flex; align-items: center; justify-content: center;
+}
+.loading-inner { text-align: center; color: rgba(255,255,255,0.6); }
+.loading-inner img { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px; border: 3px solid var(--rojo); }
+.loading-inner p { font-size: 0.9rem; letter-spacing: 1px; animation: pulse 1.4s infinite; }
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* ===== TABS ===== */
+.tab-content { display: none; min-height: calc(100vh - 70px); }
+.tab-content.active { display: block; }
+
+/* ===== ESCUDO ===== */
+.escudo-wrap {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid var(--blanco); overflow: hidden;
+  background: var(--rojo); display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.escudo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== ÚLTIMO PARTIDO ===== */
+.ultimo-card {
+  background: var(--negro); border-radius: var(--radius); padding: 24px 28px;
+  border: 1px solid rgba(139,28,28,0.3); box-shadow: var(--shadow);
+}
+.uc-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+.uc-fecha { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+.uc-resultado { font-size: 0.85rem; font-weight: 600; }
+.uc-marcador {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin-bottom: 14px;
+}
+.uc-equipo { font-size: 0.9rem; color: rgba(255,255,255,0.8); font-weight: 500; text-align: center; flex: 1; }
+.uc-score { font-family: var(--font-display); font-size: 2.2rem; color: var(--blanco); white-space: nowrap; }
+.uc-goles { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+.uc-mvp { font-size: 0.82rem; color: #f4c430; margin-bottom: 6px; }
+.uc-nota { font-size: 0.8rem; color: rgba(255,255,255,0.45); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
+
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 

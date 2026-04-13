@@ -15,8 +15,8 @@
 <header id="header">
   <div class="header-inner">
     <div class="logo-area">
-      <div class="escudo-placeholder" id="escudo-img">
-        <span>🐺</span>
+      <div class="escudo-wrap" id="escudo-img">
+        <img src="https://drive.google.com/thumbnail?id=1Vk3gwaYzWXfH7gtuRPtORVk63dNIjpcY&sz=w100" alt="Escudo LCdL" onerror="this.parentElement.innerHTML='🐺'" />
       </div>
       <div class="club-name">
         <h1>La Cueva del Lobizón</h1>
@@ -27,149 +27,169 @@
       <span></span><span></span><span></span>
     </button>
     <nav id="mainNav">
-      <a href="#inicio" class="nav-link active">Inicio</a>
-      <a href="#temporadas" class="nav-link">Temporadas</a>
-      <a href="#jugadores" class="nav-link">Jugadores</a>
-      <a href="#rivales" class="nav-link">Rivales</a>
-      <a href="#galeria" class="nav-link">Galería</a>
-      <a href="#curiosidades" class="nav-link">Datos Curiosos</a>
+      <a href="#" class="nav-link active" data-tab="inicio">Inicio</a>
+      <a href="#" class="nav-link" data-tab="temporadas">Temporadas</a>
+      <a href="#" class="nav-link" data-tab="jugadores">Jugadores</a>
+      <a href="#" class="nav-link" data-tab="rivales">Rivales</a>
+      <a href="#" class="nav-link" data-tab="galeria">Galería</a>
+      <a href="#" class="nav-link" data-tab="curiosidades">Datos Curiosos</a>
     </nav>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section id="inicio" class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge">⚽ Fútbol Amateur Uruguayo</div>
-    <h2 class="hero-title">La Cueva del<br><span class="accent">Lobizón</span></h2>
-    <p class="hero-sub">12 temporadas. 272 partidos. Una familia.</p>
-    <div class="hero-stats">
-      <div class="hstat">
-        <span class="hstat-num" data-target="272">0</span>
-        <span class="hstat-label">Partidos</span>
-      </div>
-      <div class="hstat-div"></div>
-      <div class="hstat">
-        <span class="hstat-num" data-target="120">0</span>
-        <span class="hstat-label">Victorias</span>
-      </div>
-      <div class="hstat-div"></div>
-      <div class="hstat">
-        <span class="hstat-num" data-target="509">0</span>
-        <span class="hstat-label">Goles</span>
-      </div>
-      <div class="hstat-div"></div>
-      <div class="hstat">
-        <span class="hstat-num" data-target="6">0</span>
-        <span class="hstat-label">DTs</span>
-      </div>
-    </div>
-    <a href="#temporadas" class="hero-cta">Ver Historia Completa</a>
+<!-- ===== LOADING ===== -->
+<div id="loadingScreen">
+  <div class="loading-inner">
+    <img src="https://drive.google.com/thumbnail?id=1Vk3gwaYzWXfH7gtuRPtORVk63dNIjpcY&sz=w120" alt="LCdL" onerror="this.outerHTML='<span style=font-size:4rem>🐺</span>'" />
+    <p>Cargando historia...</p>
   </div>
-</section>
+</div>
 
-<!-- ===== TEMPORADAS ===== -->
-<section id="temporadas" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Temporadas</h2>
-      <div class="filter-tabs">
-        <button class="ftab active" data-cat="all">Todas</button>
-        <button class="ftab" data-cat="MAYORES">Mayores</button>
-        <button class="ftab" data-cat="PRESENIOR">Pre Senior</button>
+<!-- ===== TAB: INICIO ===== -->
+<div id="tab-inicio" class="tab-content active">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⚽ Fútbol Amateur Uruguayo</div>
+      <h2 class="hero-title">La Cueva del<br><span class="accent">Lobizón</span></h2>
+      <p class="hero-sub" id="heroSub">Cargando datos...</p>
+      <div class="hero-stats">
+        <div class="hstat">
+          <span class="hstat-num" id="statPartidos">—</span>
+          <span class="hstat-label">Partidos</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-num" id="statVictorias">—</span>
+          <span class="hstat-label">Victorias</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-num" id="statGoles">—</span>
+          <span class="hstat-label">Goles</span>
+        </div>
+        <div class="hstat-div"></div>
+        <div class="hstat">
+          <span class="hstat-num" id="statDTs">6</span>
+          <span class="hstat-label">DTs</span>
+        </div>
       </div>
+      <button class="hero-cta" onclick="showTab('temporadas')">Ver Historia Completa</button>
     </div>
+  </section>
 
-    <div class="temporadas-grid" id="temporadasGrid">
-      <!-- JS generated -->
-    </div>
-  </div>
-</section>
-
-<!-- ===== GOLEADORES ===== -->
-<section id="goleadores" class="section section-dark">
-  <div class="container">
-    <h2 class="section-title">Goleadores Históricos</h2>
-    <div class="goleadores-podio" id="golPodio"></div>
-    <div class="goleadores-tabla" id="golTabla"></div>
-  </div>
-</section>
-
-<!-- ===== JUGADORES ===== -->
-<section id="jugadores" class="section">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Plantel Histórico</h2>
-      <div class="filter-tabs">
-        <button class="pftab active" data-filter="all">Todos</button>
-        <button class="pftab" data-filter="activo">Activos</button>
-        <button class="pftab" data-filter="retired">Retirados</button>
+  <!-- Último partido -->
+  <section class="section" style="padding:40px 0">
+    <div class="container">
+      <h2 class="section-title">Último Partido</h2>
+      <div id="ultimoPartido" class="ultimo-partido-card">
+        <div class="skeleton" style="height:120px;border-radius:12px"></div>
       </div>
     </div>
-    <div class="jugadores-grid" id="jugadoresGrid"></div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- ===== RIVALES ===== -->
-<section id="rivales" class="section section-dark">
-  <div class="container">
-    <h2 class="section-title">Registro vs Rivales</h2>
-    <div class="search-bar">
-      <input type="text" id="rivalSearch" placeholder="Buscar rival..." />
+<!-- ===== TAB: TEMPORADAS ===== -->
+<div id="tab-temporadas" class="tab-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Temporadas</h2>
+        <div class="filter-tabs">
+          <button class="ftab active" data-cat="all">Todas</button>
+          <button class="ftab" data-cat="MAYORES">Mayores</button>
+          <button class="ftab" data-cat="PRESENIOR">Pre Senior</button>
+        </div>
+      </div>
+      <div class="temporadas-grid" id="temporadasGrid"></div>
     </div>
-    <div class="table-wrap">
-      <table class="rival-table" id="rivalTable">
-        <thead>
-          <tr>
-            <th>Rival</th>
-            <th>PJ</th>
-            <th>PG</th>
-            <th>PE</th>
-            <th>PP</th>
-            <th>GF</th>
-            <th>GC</th>
-            <th>Efic.</th>
-          </tr>
-        </thead>
-        <tbody id="rivalBody"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== GALERÍA ===== -->
-<section id="galeria" class="section">
-  <div class="container">
-    <h2 class="section-title">Galería Histórica</h2>
-    <p class="section-sub">Momentos que hacen historia</p>
-    <div class="galeria-placeholder">
-      <div class="galeria-icon">📸</div>
-      <p>Las fotos históricas están en nuestra <a href="https://drive.google.com/drive/folders/1mqo4qbZ0PHKpwC5VZxqTNL4wRlLCt13d" target="_blank" rel="noopener">carpeta de Drive</a></p>
-      <p class="galeria-note">Para ver la galería integrada, asegurate de compartir las fotos como "cualquier persona con el link puede ver".</p>
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Goleadores Históricos</h2>
+      <div class="goleadores-podio" id="golPodio"></div>
+      <div class="goleadores-tabla" id="golTabla"></div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
-<!-- ===== DATOS CURIOSOS ===== -->
-<section id="curiosidades" class="section section-dark">
-  <div class="container">
-    <h2 class="section-title">Datos Curiosos</h2>
-    <p class="section-sub">Historias que hacen a La Cueva</p>
-    <div class="curiosidades-grid" id="curiosidadesGrid"></div>
-    <button class="btn-reload" id="reloadCuriosidades">
-      🔀 Mezclar datos
-    </button>
-  </div>
-</section>
+<!-- ===== TAB: JUGADORES ===== -->
+<div id="tab-jugadores" class="tab-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Plantel Histórico</h2>
+        <div class="filter-tabs">
+          <button class="pftab active" data-filter="all">Todos</button>
+          <button class="pftab" data-filter="activo">Activos</button>
+          <button class="pftab" data-filter="retired">Retirados</button>
+        </div>
+      </div>
+      <div class="jugadores-grid" id="jugadoresGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== TAB: RIVALES ===== -->
+<div id="tab-rivales" class="tab-content">
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Registro vs Rivales</h2>
+      <div class="search-bar">
+        <input type="text" id="rivalSearch" placeholder="Buscar rival..." />
+      </div>
+      <div class="table-wrap">
+        <table class="rival-table" id="rivalTable">
+          <thead>
+            <tr>
+              <th>Rival</th><th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th><th>Efic.</th>
+            </tr>
+          </thead>
+          <tbody id="rivalBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== TAB: GALERÍA ===== -->
+<div id="tab-galeria" class="tab-content">
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Galería Histórica</h2>
+      <p class="section-sub">Momentos que hacen historia</p>
+      <div class="galeria-placeholder">
+        <div class="galeria-icon">📸</div>
+        <p>Las fotos históricas están en nuestra <a href="https://drive.google.com/drive/folders/1mqo4qbZ0PHKpwC5VZxqTNL4wRlLCt13d" target="_blank" rel="noopener">carpeta de Drive</a></p>
+        <p class="galeria-note">Compartí las fotos como "cualquier persona con el link puede ver" para verlas integradas acá.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== TAB: CURIOSIDADES ===== -->
+<div id="tab-curiosidades" class="tab-content">
+  <section class="section section-dark" style="min-height:calc(100vh - 70px)">
+    <div class="container">
+      <h2 class="section-title">Datos Curiosos</h2>
+      <p class="section-sub">Historias que hacen a La Cueva</p>
+      <div class="curiosidades-grid" id="curiosidadesGrid"></div>
+      <button class="btn-reload" id="reloadCuriosidades">🔀 Mezclar datos</button>
+    </div>
+  </section>
+</div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">🐺 La Cueva del Lobizón</div>
+    <div class="footer-logo">
+      <img src="https://drive.google.com/thumbnail?id=1Vk3gwaYzWXfH7gtuRPtORVk63dNIjpcY&sz=w60" alt="LCdL" onerror="this.outerHTML='🐺'" style="height:40px;border-radius:50%;margin:0 auto 8px" />
+      La Cueva del Lobizón
+    </div>
     <p class="footer-text">Est. 2004 · Compitiendo desde 2014<br>Fútbol amateur. Pasión real.</p>
     <div class="footer-links">
-      <a href="https://docs.google.com/spreadsheets/d/1JDZ2binciBX6cZ1y6qe1SDlukuaPdL9tjZ_iM4d6mfo" target="_blank">📊 Sheet histórico</a>
+      <a href="https://docs.google.com/spreadsheets/d/1yFxmL00TynoUR3-RwpoHVkL1iH3dx84mDQWUoKS-wA8" target="_blank">📊 Sheet oficial</a>
       <a href="https://drive.google.com/drive/folders/1mqo4qbZ0PHKpwC5VZxqTNL4wRlLCt13d" target="_blank">📁 Drive del club</a>
     </div>
     <p class="footer-copy">© 2025 La Cueva del Lobizón. Hecho con ❤️ por y para el grupo.</p>
@@ -178,7 +198,7 @@
 
 <!-- ===== CHATBOT ===== -->
 <div class="chat-fab" id="chatFab" title="Preguntale al Lobo">
-  <span class="chat-fab-icon">🐺</span>
+  <img src="https://drive.google.com/thumbnail?id=1Vk3gwaYzWXfH7gtuRPtORVk63dNIjpcY&sz=w60" alt="LCdL" onerror="this.outerHTML='<span style=font-size:1.5rem>🐺</span>'" style="width:32px;height:32px;border-radius:50%;object-fit:cover" />
   <span class="chat-fab-label">Preguntale<br>al Lobo</span>
 </div>
 
@@ -188,9 +208,7 @@
     <button class="chat-close" id="chatClose">✕</button>
   </div>
   <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">
-      ¡Aullido! 🐺 Soy el guardián de la historia de La Cueva. Preguntame sobre partidos, jugadores, goles, temporadas... ¡lo que quieras!
-    </div>
+    <div class="chat-msg bot">¡Aullido! 🐺 Soy el guardián de la historia de La Cueva. Preguntame sobre partidos, jugadores, goles, temporadas... ¡lo que quieras!</div>
   </div>
   <div class="chat-input-area">
     <input type="text" id="chatInput" placeholder="¿Quién es el máximo goleador?" />
@@ -199,7 +217,6 @@
 </div>
 
 <script src="config.js"></script>
-<script src="data.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
