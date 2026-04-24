@@ -474,6 +474,69 @@ img { max-width: 100%; display: block; }
   .tc-stats { grid-template-columns: 1fr 1fr 1fr; }
 }
 
+/* ===== ÚLTIMOS PARTIDOS ===== */
+.ultimos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ultimo-cat-label {
+  font-family: var(--font-display); font-size: 1.1rem; color: var(--rojo);
+  letter-spacing: 1px; margin-bottom: 10px;
+}
+@media (max-width: 640px) { .ultimos-grid { grid-template-columns: 1fr; } }
+
+/* ===== ÚLTIMOS 5 ===== */
+.ultimos5-wrap { display: flex; gap: 24px; flex-wrap: wrap; padding: 8px 0; }
+.u5-strip { display: flex; align-items: center; gap: 10px; background: var(--blanco); border-radius: 100px; padding: 8px 16px; box-shadow: var(--shadow); }
+.u5-label { font-size: 0.75rem; font-weight: 600; color: var(--gris); white-space: nowrap; }
+.u5-dots { display: flex; gap: 6px; }
+.u5-dot { width: 14px; height: 14px; border-radius: 50%; display: block; }
+.u5-dot.g { background: #4caf50; }
+.u5-dot.e { background: #f4c430; }
+.u5-dot.p { background: #e57373; }
+
+/* ===== PODIO — DESKTOP: silver-left, gold-center, bronze-right ===== */
+.goleadores-podio { display: flex; align-items: flex-end; justify-content: center; gap: 16px; margin-bottom: 40px; }
+.podio-item.p1 { order: 2; } /* gold center */
+.podio-item.p2 { order: 1; } /* silver left */
+.podio-item.p3 { order: 3; } /* bronze right */
+
+/* ===== PODIO — MOBILE: gold top, silver+bronze below ===== */
+@media (max-width: 600px) {
+  .goleadores-podio { flex-wrap: wrap; justify-content: center; align-items: center; }
+  .podio-item { max-width: 45%; }
+  .podio-item.p1 { order: 1; max-width: 100%; width: 100%; } /* gold first, full width */
+  .podio-item.p2 { order: 2; }
+  .podio-item.p3 { order: 3; }
+}
+
+/* ===== JUGADORES — tooltip hover ===== */
+.jugador-card { position: relative; overflow: visible; }
+.jc-apodo { font-size: 0.72rem; color: var(--gris); margin-bottom: 2px; font-style: italic; }
+.jc-pos { font-size: 0.68rem; color: var(--gris); margin-bottom: 4px; }
+.jc-tooltip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: var(--negro); color: rgba(255,255,255,0.9); border: 1px solid var(--rojo);
+  border-radius: 8px; padding: 10px 14px; font-size: 0.78rem; line-height: 1.4;
+  width: 200px; z-index: 50; opacity: 0; pointer-events: none;
+  transition: opacity 0.2s ease; text-align: center; box-shadow: var(--shadow-lg);
+}
+.jc-tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  border: 6px solid transparent; border-top-color: var(--rojo);
+}
+.jugador-card:hover .jc-tooltip { opacity: 1; }
+@media (max-width: 768px) {
+  .jc-tooltip { display: none; } /* En mobile no hay hover, se puede activar con tap futuro */
+}
+
+/* ===== DADO ===== */
+.btn-dice {
+  display: block; margin: 32px auto 0; font-size: 2.8rem;
+  background: none; border: none; cursor: pointer;
+  transition: transform 0.15s ease;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+.btn-dice:hover { transform: rotate(20deg) scale(1.15); }
+.btn-dice:active { transform: rotate(180deg) scale(0.95); }
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }

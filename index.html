@@ -78,12 +78,26 @@
     </div>
   </section>
 
-  <!-- Último partido -->
-  <section class="section" style="padding:40px 0">
+  <!-- Últimos 5 partidos -->
+  <section class="section" style="padding:24px 0 0">
+    <div class="container">
+      <div id="ultimos5" class="ultimos5-wrap"></div>
+    </div>
+  </section>
+
+  <!-- Último partido por categoría -->
+  <section class="section" style="padding:32px 0 48px">
     <div class="container">
       <h2 class="section-title">Último Partido</h2>
-      <div id="ultimoPartido" class="ultimo-partido-card">
-        <div class="skeleton" style="height:120px;border-radius:12px"></div>
+      <div class="ultimos-grid">
+        <div>
+          <div class="ultimo-cat-label">Mayores</div>
+          <div id="ultimoMayores"><div class="skeleton" style="height:120px;border-radius:12px"></div></div>
+        </div>
+        <div>
+          <div class="ultimo-cat-label">Pre Senior</div>
+          <div id="ultimoPresenior"><div class="skeleton" style="height:120px;border-radius:12px"></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -107,7 +121,14 @@
 
   <section class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Goleadores Históricos</h2>
+      <div class="section-header">
+        <h2 class="section-title">Goleadores Históricos</h2>
+        <div class="filter-tabs">
+          <button class="gftab active" data-cat="all">Todas</button>
+          <button class="gftab" data-cat="MAYORES">Mayores</button>
+          <button class="gftab" data-cat="PRESENIOR">Pre Senior</button>
+        </div>
+      </div>
       <div class="goleadores-podio" id="golPodio"></div>
       <div class="goleadores-tabla" id="golTabla"></div>
     </div>
@@ -135,7 +156,14 @@
 <div id="tab-rivales" class="tab-content">
   <section class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Registro vs Rivales</h2>
+      <div class="section-header">
+        <h2 class="section-title">Registro vs Rivales</h2>
+        <div class="filter-tabs">
+          <button class="rftab active" data-cat="all">Todas</button>
+          <button class="rftab" data-cat="MAYORES">Mayores</button>
+          <button class="rftab" data-cat="PRESENIOR">Pre Senior</button>
+        </div>
+      </div>
       <div class="search-bar">
         <input type="text" id="rivalSearch" placeholder="Buscar rival..." />
       </div>
@@ -175,7 +203,7 @@
       <h2 class="section-title">Datos Curiosos</h2>
       <p class="section-sub">Historias que hacen a La Cueva</p>
       <div class="curiosidades-grid" id="curiosidadesGrid"></div>
-      <button class="btn-reload" id="reloadCuriosidades">🔀 Mezclar datos</button>
+      <button class="btn-dice" id="reloadCuriosidades" title="Mezclar datos curiosos">🎲</button>
     </div>
   </section>
 </div>
